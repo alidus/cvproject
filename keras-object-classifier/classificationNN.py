@@ -25,10 +25,11 @@ class ClassificationNN:
 
         model.add(Flatten())
         model.add(Dense(500))
+
         model.add(Activation("relu"))
 
         model.add(Dense(classes))
         print("Classes: " + str(classes))
         model.add(Activation("softmax"))
-
+        print(model.summary())
         return model

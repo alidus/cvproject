@@ -20,7 +20,7 @@ import os
 ap = argparse.ArgumentParser()
 ap.add_argument("-d", "--dataset", required=True, help="path to input dataset")
 ap.add_argument("-m", "--model", required=True, help="path to output model")
-ap.add_argument("-p", "--plot", type=str, default="plot.png", help="path to output accuracy/loss plot")
+ap.add_argument("-p", "--plot", type=str, default="plots/plot.png", help="path to output accuracy/loss plot")
 ap.add_argument("-e", "--epochs", type=int, default=25, help="Amount of training epochs")
 ap.add_argument("-bs", "--bsize", type=int, default=4, help="Batch size")
 args = vars(ap.parse_args())
@@ -49,7 +49,7 @@ for imagePath in imagePaths:
 data = np.array(data, dtype="float") / 255.0  # Нормализуем цвета
 labels = np.array(labels)
 
-NUM_CLASSES = len(labels)
+NUM_CLASSES = len(set(labels))
 
 (trainX, testX, trainY, testY) = train_test_split(data, labels, test_size=0.25, random_state=42)
 
